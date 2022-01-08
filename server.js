@@ -22,11 +22,10 @@ app.set("view engine", "ejs")
 app.use('/css', express.static(path.resolve(__dirname, "asset/css")))
 app.use('/img', express.static(path.resolve(__dirname, "asset/img")))
 app.use('/js', express.static(path.resolve(__dirname, "asset/js")))
+
+app.use('/', require('./server/routes/router'));
 const PORT = process.env.Port || 8080
-app.get('/', (req, res) => {
-    // res.send('root');
-    res.render('index.ejs');
-})
+
 
 app.listen(PORT, () => { console.log('Server is running on http://localhost:${PORT}') });
 
